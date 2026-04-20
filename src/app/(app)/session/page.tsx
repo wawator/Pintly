@@ -58,7 +58,7 @@ export default function NewSessionPage() {
         <p className="text-muted-foreground text-sm mt-1">Où est-ce qu&apos;on boit ce soir ?</p>
       </div>
 
-      <Card>
+      <Card className="overflow-visible">
         <CardHeader>
           <CardTitle className="text-base">Choisis ton bar</CardTitle>
         </CardHeader>
