@@ -52,7 +52,7 @@ export default function NewSessionPage() {
   }
 
   return (
-    <div className="max-w-lg mx-auto px-4 py-6">
+    <div className="max-w-lg mx-auto px-4 py-6 pb-32">
       <div className="mb-6">
         <h1 className="text-2xl font-black">Nouvelle session 🍺</h1>
         <p className="text-muted-foreground text-sm mt-1">Où est-ce qu&apos;on boit ce soir ?</p>
@@ -63,29 +63,29 @@ export default function NewSessionPage() {
           <CardTitle className="text-base">Choisis ton bar</CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleStart} className="space-y-4">
-            <div className="space-y-1.5">
-              <Label>Bar</Label>
-              <BarSearch onSelect={setSelectedBar} selectedBar={selectedBar} />
-              <p className="text-xs text-muted-foreground">
-                Tape le nom pour chercher. Si ton bar n&apos;existe pas, tu peux le créer.
-              </p>
-            </div>
-
-            {error && <p className="text-sm text-destructive">{error}</p>}
-
-            <Button
-              type="submit"
-              className="w-full bg-[#FC4C02] hover:bg-[#e04400] text-white font-bold gap-2"
-              disabled={loading || !selectedBar}
-              size="lg"
-            >
-              <Play className="w-4 h-4" />
-              {loading ? 'Démarrage...' : 'Démarrer la session'}
-            </Button>
-          </form>
+          <div className="space-y-1.5">
+            <Label>Bar</Label>
+            <BarSearch onSelect={setSelectedBar} selectedBar={selectedBar} />
+            <p className="text-xs text-muted-foreground">
+              Tape le nom pour chercher. Si ton bar n&apos;existe pas, tu peux le créer.
+            </p>
+          </div>
+          {error && <p className="text-sm text-destructive mt-3">{error}</p>}
         </CardContent>
       </Card>
+
+      {/* Bouton fixe en bas */}
+      <div className="fixed bottom-20 left-0 right-0 px-4 max-w-lg mx-auto">
+        <Button
+          onClick={handleStart}
+          className="w-full bg-[#FC4C02] hover:bg-[#e04400] text-white font-bold gap-2 shadow-lg"
+          disabled={loading || !selectedBar}
+          size="lg"
+        >
+          <Play className="w-4 h-4" />
+          {loading ? 'Démarrage...' : 'Démarrer la session'}
+        </Button>
+      </div>
     </div>
   )
 }
